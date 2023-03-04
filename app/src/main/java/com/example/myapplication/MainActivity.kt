@@ -3,12 +3,14 @@ package com.example.myapplication
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.ViewGroup
 import android.view.animation.BounceInterpolator
-import android.view.animation.OvershootInterpolator
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -80,7 +82,15 @@ class MainActivity : AppCompatActivity() {
 
         button4.setOnClickListener {
 
+            val intent = Intent(this, MainActivity2::class.java)
 
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this@MainActivity,
+                button4,
+                "sharedElement"
+            )
+
+            startActivity(intent, options.toBundle())
 
         }
 
